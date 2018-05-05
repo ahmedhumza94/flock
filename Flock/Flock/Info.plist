@@ -22,10 +22,18 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>GoogleSignIn</string>
+			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.googleusercontent.apps.669158066887-24btq7ksd6g0fhn0c7tit7q24nv23hdt</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.flock.Flock</string>
 			</array>
 		</dict>
 	</array>

@@ -11,27 +11,25 @@ import GoogleSignIn
 
 @UIApplicationMain
 
-
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
 
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Initialize sign-in
-        GIDSignIn.sharedInstance().clientID = "YOUR_CLIENT_ID"
+        GIDSignIn.sharedInstance().clientID = "669158066887-24btq7ksd6g0fhn0c7tit7q24nv23hdt.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
         
         return true
     }
-
-    func application(application: UIApplication,
-                     openURL url: NSURL, options: [String: AnyObject]) -> Bool {
-        return GIDSignIn.sharedInstance().handleURL(url,
-                                                    sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey] as? String,
-                                                    annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
-    }
+    
+    func application(_ application: UIApplication,
+                     open url: URL, options: [UIApplicationOpenURLOptionsKey: Any]) -> Bool {
+    return GIDSignIn.sharedInstance().handle(url,
+    sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+    annotation: options[UIApplicationOpenURLOptionsKey.annotation] as? String)
+}
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
               withError error: Error!) {
@@ -48,14 +46,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             // ...
         }
     }
-
+    
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
               withError error: Error!) {
         // Perform any operations when the user disconnects from app here.
         // ...
     }
-    
-    
+
+
+    // [END disconnect_handler]
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
